@@ -1,0 +1,4 @@
+[{"title":"lechuga","description":"lechuga morada","price":700,"thumbail":"https://cdn.pixabay.com/photo/2016/03/05/22/01/lettuce-1239155_960_720.jpg","code":101,"stock":7,"id":1},
+{"title":"tomate","description":"redondo","price":500,"thumbail":"https://cdn.pixabay.com/photo/2014/04/10/11/06/tomatoes-320860_960_720.jpg","code":102,"stock":15,"id":2},
+{"title":"limón","description":"jugoso","price":600,"thumbail":"https://cdn.pixabay.com/photo/2018/06/17/14/30/lime-3480609_960_720.jpg","code":103,"stock":9,"id":3}
+]
