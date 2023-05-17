@@ -1,0 +1,32 @@
+[
+    {
+      "title": "Lechuga",
+      "description": "Lechuga morada",
+      "code": "101",
+      "status": true,
+      "stock": 7,
+      "category": "Verduras",
+      "thumbnails": "https://cdn.pixabay.com/photo/2016/03/05/22/01/lettuce-1239155_960_720.jpg",
+      "id": 1
+    },
+    {
+      "title": "Tomate",
+      "description": "Redondo",
+      "code": "102",
+      "status": true,
+      "stock": 15,
+      "category": "frutas",
+      "thumbnails": "https://cdn.pixabay.com/photo/2014/04/10/11/06/tomatoes-320860_960_720.jpg",
+      "id": 2
+    },
+    {
+      "title": "Limón",
+      "description": "jugoso",
+      "code": "103",
+      "status": true,
+      "stock": 9,
+      "category": "Verduras",
+      "thumbnails": "https://cdn.pixabay.com/photo/2018/06/17/14/30/lime-3480609_960_720.jpg",
+      "id": 3
+    }
+  ]
