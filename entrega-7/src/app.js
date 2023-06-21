@@ -7,13 +7,12 @@ import { cartsRouter } from "./routes/carts.router.js";
 import { realTimeProducts } from "./routes/realtimeproducts.router.js";
 import { chatRouter } from "./routes/chat.router.js";
 import { initSocket } from "./socket.js";
+import { viewsRouter } from "./routers/views.router.js";import { viewsRouter } from "./routers/views.router.js";
 
 
 // app
 const app = express();
 
-// server estatico de prueba
-app.use(express.static("public"));
 
 // parseo de json
 app.use(express.json());
@@ -40,10 +39,12 @@ app.use("/realtimeproducts", realTimeProducts);
 
 app.use("/chat", chatRouter);
 
+app.use("/", viewsRouter);
+
 //mongosee
 
 mongoose.connect(
-  
+  "mongodb+srv://agueromariano138:HDlwtTSMZwQoO4Vi@backendcoderhouse.aipky1f.mongodb.net/?retryWrites=true&w=majoritymongodb+srv://agueromariano138:HDlwtTSMZwQoO4Vi@backendcoderhouse.aipky1f.mongodb.net/?retryWrites=true&w=majority",
 );
 
 // Arranco mi webServer en el port 8080

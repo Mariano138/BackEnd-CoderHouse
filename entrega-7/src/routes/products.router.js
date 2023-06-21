@@ -11,70 +11,64 @@ const productManager = new ProductManager();
 
 const productsRouter = Router();
 
-// Defino la ruta para ver productos
+//ruta para ver productos
 productsRouter.get("/", async (req, res) => {
-
   try {
-    let limit = req.query.limit;
-    let allProducts = await productManager.getProducts();
-    if (limit === undefined) {
-      res.status(201).render("home", { allProducts, filtered: false });
-    } else {
-      let limitProducts = [];
-      for (let i = 0; i < parseInt(limit); i++) {
-        limitProducts.push(allProducts[i]);
-      }
-      res.status(201).render("home", { limitProducts, filtered: true });
-    }
+    let limit = parseInt(req.query.limit) || 10;
+    let page = parseInt(req.query.page) || 1;
+    let query = req.query;
+    let listProducts = await productManager.getProducts(limit, page, query);
+    res.status(201).send(listProducts);
   } catch (err) {
-    res.status(400).send({ err });
+    res.status(500).send({ err });
   }
 });
 
+//ruta para ver productos por id
 productsRouter.get("/:pid", async (req, res) => {
   try {
-    let idFilter = await productManager.getProductById(
-      parseInt(req.params.pid)
-    );
+    let idFilter = await productManager.getProductById(req.params.pid);
     res.status(201).send(idFilter);
   } catch (err) {
-    res.status(400).send({ err });
+    res.status(500).send({ err });
   }
 });
 
+//ruta POST para agregar un nuevo producto
 productsRouter.post("/", async (req, res) => {
   try {
     const newProduct = await productManager.addProduct(req.body);
+    io.sockets.emit("products", await productManager.getProducts());
     res.status(201).send(newProduct);
   } catch (err) {
-    res.status(400).send({ err });
+    res.status(500).send({ err });
   }
 });
 
-// PUT
+//ruta PUT para actualizar un producto
 productsRouter.put("/:pid", async (req, res) => {
   try {
     const updateProduct = await productManager.updateProduct(
-      parseInt(req.params.pid),
+      req.params.pid,
       req.body
     );
+    io.sockets.emit("products", await productManager.getProducts());
     res.status(201).send(updateProduct);
   } catch (err) {
-    res.status(400).send({ err });
+    res.status(500).send({ err });
   }
 });
 
-// DELETE
+//ruta DELETE para eliminar un producto
 productsRouter.delete("/:pid", async (req, res) => {
   try {
-    const deleteProduct = await productManager.deleteProduct(
-      parseInt(req.params.pid)
-    );
-    res.status(201).send(deleteProduct);
+    const deleteProduct = await productManager.deleteProduct(req.params.pid);
+    io.sockets.emit("products", await productManager.getProducts());
+    res.status(204).send(deleteProduct);
   } catch (err) {
-    res.status(400).send({ err });
+    res.status(500).send({ err });
   }
 });
 
-// Exporto la ruta
+
 export { productsRouter };
