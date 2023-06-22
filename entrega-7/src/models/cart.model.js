@@ -1,10 +1,17 @@
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 
 export const cartSchema = new mongoose.Schema({
   products: {
-    type: [],
-    required: false,
     default: [],
+    type: [
+      {
+        product: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "products",
+        },
+        quantity: Number,
+      },
+    ],
   },
 });
 

@@ -20,13 +20,44 @@ export default class ProductManager {
     }
     return await this.model.create(product);
   }
+  async getProducts(limit, page, query) {
+    let options = { limit, page };
+    let filter = {};
+    if (query.category) {
+      filter.category = query.category;
+    }
+    if (query.status) {
+      filter.status = query.status;
+      filter.stock = { $gt: 0 };
+    }
+    if (query.sort) {
+      options.sort = { price: query.sort };
+    }
+    return await this.model.paginate(filter, options);
+  }
 
-  async getProducts() {
+  async getProductsforView(limit, page, query) {
+    let options = { lean: true, limit, page };
+    let filter = {};
+    if (query.category) {
+      filter.category = query.category;
+    }
+    if (query.status) {
+      filter.status = query.status;
+      filter.stock = { $gt: 0 };
+    }
+    if (query.sort) {
+      options.sort = { price: query.sort };
+    }
+    return await this.model.paginate(filter, options);
+  }
+
+  async getProductsforSocket() {
     return await this.model.find().lean();
   }
 
   async getProductById(id) {
-    return await this.model.findOne({ _id: id });
+    return await this.model.findOne({ _id: id }).lean();
   }
 
   async updateProduct(id, field) {
