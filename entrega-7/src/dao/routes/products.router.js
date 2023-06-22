@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { io } from "../app.js";
+import { io } from "../../app.js";
 
 
-import ProductManager from "../services/product.service.js";
+import ProductManager from "../product.service.js";
 
 
 const productManager = new ProductManager();

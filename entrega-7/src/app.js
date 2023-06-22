@@ -2,12 +2,12 @@
 import express from "express";
 import handlerbars from "express-handlebars";
 import mongoose from "mongoose";
-import { productsRouter } from "./routes/products.router.js";
-import { cartsRouter } from "./routes/carts.router.js";
-import { realTimeProducts } from "./routes/realtimeproducts.router.js";
-import { chatRouter } from "./routes/chat.router.js";
+import { productsRouter } from "../src/dao/routes/products.router.js";
+import { cartsRouter } from "../src/dao/routes/carts.router.js";
+import { realTimeProducts } from "../src/dao/routes/realtimeproducts.router.js";
+import { chatRouter } from "../src/dao/routes/chat.router.js";
 import { initSocket } from "./socket.js";
-import { viewsRouter } from "./routers/views.router.js";import { viewsRouter } from "./routers/views.router.js";
+import { viewsRouter } from "../src/dao/routes/views.router.js";
 
 
 // app

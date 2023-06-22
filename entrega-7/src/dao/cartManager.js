@@ -5,7 +5,7 @@ import fs from "fs";
 export default class CartManager {
   #id = 0;
   constructor() {
-    this.path = "./src/services/carts.json";
+    this.path = "./src/dao/carts.json";
     if (!fs.existsSync(this.path)) {
       fs.writeFileSync(this.path, JSON.stringify([]));
       console.log("Cree el archivo vacio");
