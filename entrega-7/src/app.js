@@ -44,7 +44,7 @@ app.use("/", viewsRouter);
 //mongosee
 
 mongoose.connect(
-  "mongodb+srv://agueromariano138:HDlwtTSMZwQoO4Vi@backendcoderhouse.aipky1f.mongodb.net/?retryWrites=true&w=majoritymongodb+srv://agueromariano138:HDlwtTSMZwQoO4Vi@backendcoderhouse.aipky1f.mongodb.net/?retryWrites=true&w=majority",
+  "mongodb+srv://agueromariano138:HDlwtTSMZwQoO4Vi@backendcoderhouse.aipky1f.mongodb.net/?retryWrites=true&w=majority",
 );
 
 // Arranco mi webServer en el port 8080

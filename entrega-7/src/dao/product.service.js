@@ -15,8 +15,8 @@ export default class ProductManager {
       !product.stock ||
       !product.category
     ) {
-      console.log("Te falta completar un campo");
-      return "Te falta completar un campo";
+      console.log("Por favor complete todos los campos");
+      return "Por favor complete todos los campos";
     }
     return await this.model.create(product);
   }
